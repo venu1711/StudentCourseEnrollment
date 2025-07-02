@@ -32,9 +32,22 @@ public class EnrollmentService {
         return false;
     }
 
+//  ****************CHECK WITH CHATGPT FIRST************
     public boolean removeCourse(int id, String course){
         Enrollment e = findId(id);
-        
+        if(e != null){
+            if(e.getCourses().contains(course)){
+                e.getCourses().remove(course);
+
+                if(e.getCourses().isEmpty()){
+                    remove(id);
+                }else{
+                    saveToFile();
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<String> getAllCoursesByStudent(int id){

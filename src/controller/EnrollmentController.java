@@ -30,6 +30,10 @@ public class EnrollmentController {
         return service.remove(id);
     }
 
+    public boolean removeCourse(int id, String course){
+        return service.removeCourse(id,course);
+    }
+
     public ArrayList<String> getCourses(int id){
         return service.getAllCoursesByStudent(id);
     }
